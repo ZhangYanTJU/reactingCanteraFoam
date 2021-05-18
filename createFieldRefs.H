@@ -4,7 +4,7 @@ const label inertIndex(composition.species()[inertSpecie]);
 
 word mechanismFile(thermo.lookup("mechanismFile"));
 Cantera::IdealGasMix gas(mechanismFile, "");
-word transportModel(thermo.lookup("transportModel")); // Mix,
+word transportModel(thermo.lookup("transportModel")); // Mix, Multi, UnityLewis, Ion, water, HighP
 autoPtr<Cantera::Transport> trans(newTransportMgr(transportModel, &gas, 0));
 
 if (gas.nSpecies() != composition.species().size())
