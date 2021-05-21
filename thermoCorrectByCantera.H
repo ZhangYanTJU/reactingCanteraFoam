@@ -31,22 +31,22 @@
         {
             yTemp[i] = Y[i][celli];
         }
-        gas.setState_PY(pCells[celli], yTemp.begin());
-        gas.setState_HP(hCells[celli], pCells[celli]); // setState_HP needs (J/kg)
+        gas->setState_PY(pCells[celli], yTemp.begin());
+        gas->setState_HP(hCells[celli], pCells[celli]); // setState_HP needs (J/kg)
 
-        TCells[celli] = gas.temperature();
+        TCells[celli] = gas->temperature();
 
-        psiCells[celli] = gas.meanMolecularWeight()/gas.RT();
+        psiCells[celli] = gas->meanMolecularWeight()/gas->RT();
 
         muCells[celli] = trans->viscosity();
 
-        alphaCells[celli] = trans->thermalConductivity()/(gas.cp_mass());
+        alphaCells[celli] = trans->thermalConductivity()/(gas->cp_mass());
 
-        scalarList diffTemp(gas.nSpecies());
+        scalarList diffTemp(gas->nSpecies());
         trans->getMixDiffCoeffs(&diffTemp[0]);
         forAll(Y, i)
         {
-            diff[i][celli] = gas.density()*diffTemp[i];
+            diff[i][celli] = gas->density()*diffTemp[i];
         }
     }
 
@@ -86,17 +86,17 @@
                 {
                     yTemp[i] = Y[i].boundaryField()[patchi][facei];
                 }
-                gas.setState_TPY(pT[facei], pp[facei], yTemp.begin());
+                gas->setState_TPY(pT[facei], pp[facei], yTemp.begin());
 
-                ph[facei] = gas.enthalpy_mass();
+                ph[facei] = gas->enthalpy_mass();
 
-                ppsi[facei] = gas.meanMolecularWeight()/gas.RT();
+                ppsi[facei] = gas->meanMolecularWeight()/gas->RT();
 
                 pmu[facei] = trans->viscosity();
 
-                palpha[facei] = trans->thermalConductivity()/(gas.cp_mass());
+                palpha[facei] = trans->thermalConductivity()/(gas->cp_mass());
 
-                scalarList diffTemp(gas.nSpecies());
+                scalarList diffTemp(gas->nSpecies());
                 trans->getMixDiffCoeffs(&diffTemp[0]);
                 forAll(Y, i)
                 {
@@ -113,18 +113,18 @@
                 {
                     yTemp[i] = Y[i].boundaryField()[patchi][facei];
                 }
-                gas.setState_PY(pp[facei], yTemp.begin());
-                gas.setState_HP(ph[facei], pp[facei]);
+                gas->setState_PY(pp[facei], yTemp.begin());
+                gas->setState_HP(ph[facei], pp[facei]);
 
-                pT[facei] = gas.temperature();
+                pT[facei] = gas->temperature();
 
-                ppsi[facei] = gas.meanMolecularWeight()/gas.RT();
+                ppsi[facei] = gas->meanMolecularWeight()/gas->RT();
 
                 pmu[facei] = trans->viscosity();
 
-                palpha[facei] = trans->thermalConductivity()/(gas.cp_mass());
+                palpha[facei] = trans->thermalConductivity()/(gas->cp_mass());
 
-                scalarList diffTemp(gas.nSpecies());
+                scalarList diffTemp(gas->nSpecies());
                 trans->getMixDiffCoeffs(&diffTemp[0]);
                 forAll(Y, i)
                 {

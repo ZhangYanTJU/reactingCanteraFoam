@@ -16,8 +16,10 @@
           : -dpdt
         )
       - fvm::laplacian(turbulence->alphaEff(), he)
+      + diffsh
      ==
         reaction->Qdot()
+      + fvc::div(vk)
       + fvOptions(rho, he)
     );
 

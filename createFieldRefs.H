@@ -2,12 +2,18 @@ const volScalarField& psi = thermo.psi();
 volScalarField& T = thermo.T();
 const label inertIndex(composition.species()[inertSpecie]);
 
-word mechanismFile(thermo.lookup("mechanismFile"));
-Cantera::IdealGasMix gas(mechanismFile, "");
-word transportModel(thermo.lookup("transportModel")); // Mix, Multi, UnityLewis, Ion, water, HighP
-autoPtr<Cantera::Transport> trans(newTransportMgr(transportModel, &gas, 0));
+//for cantera 2.4
+//Cantera::IdealGasMix gas(mechanismFile, "");
+//autoPtr<Cantera::Transport> trans(newTransportMgr(transportModel, &gas, 0));
 
-if (gas.nSpecies() != composition.species().size())
+//for cantera 2.5
+word mechanismFile(thermo.lookup("mechanismFile"));
+auto sol = Cantera::newSolution(mechanismFile, "");
+auto gas = sol->thermo();
+word transportModel(thermo.lookup("transportModel")); // Mix, Multi, UnityLewis, Ion, water, HighP
+autoPtr<Cantera::Transport> trans(newTransportMgr(transportModel, sol->thermo().get()));
+
+if (gas->nSpecies() != composition.species().size())
 {
     FatalErrorIn("CanteraChemistryModel::solve")
         << "nSpecies in Cantera is not consistent with that in OpenFOAM" << endl
@@ -17,11 +23,11 @@ else
 {
     forAll(Y, i)
     {
-        if (gas.speciesName(i) != Y[i].name())
+        if (gas->speciesName(i) != Y[i].name())
         {
             FatalErrorIn("CanteraChemistryModel::solve")
                 << "species name in Cantera is not consistent with that in OpenFOAM" << endl
-                << "in Cantera:" << gas.speciesName(i) << endl
+                << "in Cantera:" << gas->speciesName(i) << endl
                 << "in OpenFOAM:" << Y[i].name() << endl
                 << abort(FatalError) ;
         }
@@ -77,3 +83,82 @@ volScalarField ha
     ),
     thermo.he()+thermo.hc()
 );
+
+
+
+volScalarField diffsh
+(
+    IOobject
+    (
+        "diffsh",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(dimEnergy/dimTime/dimVolume, 0)
+);
+volVectorField vk
+(
+    IOobject
+    (
+        "vk",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedVector(dimensionSet(1,0,-3,0,0,0,0), Zero)
+);
+volScalarField Hsi
+(
+    IOobject
+    (
+        "Hsi",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(dimEnergy/dimMass, 0.),
+    zeroGradientFvPatchScalarField::typeName
+);
+volVectorField DiffError
+(
+    IOobject
+    (
+        "DiffError",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedVector("DiffError", dimDynamicViscosity/dimLength, Zero)
+);
+
+
+PtrList<volScalarField> X(Y.size());
+forAll(X,i)
+{
+word name("X"+Y[i].name());
+X.set
+(
+i,new volScalarField
+    (
+    IOobject
+    (
+        name,
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
+    )
+);
+}

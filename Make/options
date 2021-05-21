@@ -36,4 +36,4 @@ EXE_LIBS = \
     -lchemistryModel \
     -lODE \
     -lcombustionModels \
-    /proj/lufmreact/users/x_yzhan/softwareZY/build/cantera/lib/libcantera.a
+    $(pj_dir)/softwareZY/build/cantera/lib/libcantera.a

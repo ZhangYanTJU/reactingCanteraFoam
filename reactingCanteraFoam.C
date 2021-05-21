@@ -29,13 +29,16 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-#include "cantera/thermo.h"
-#include "cantera/kinetics.h"
-#include "cantera/transport.h"
-#include "cantera/zerodim.h"
-#include "cantera/zeroD/Reactor.h"
-#include "cantera/PureFluid.h"
-#include "cantera/IdealGasMix.h"
+//#include "cantera/thermo.h"
+//#include "cantera/kinetics.h"
+//#include "cantera/transport.h"
+//#include "cantera/zerodim.h"
+//#include "cantera/zeroD/Reactor.h"
+//#include "cantera/PureFluid.h"
+//#include "cantera/IdealGasMix.h"
+#include "cantera/thermo/IdealGasPhase.h" // defines class IdealGasPhase
+#include "cantera/kinetics/GasKinetics.h"
+#include "cantera/transport.h" // transport properties
 
 #include "fvCFD.H"
 #include "turbulentFluidThermoModel.H"
