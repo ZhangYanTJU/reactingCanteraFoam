@@ -36,17 +36,17 @@
 
         TCells[celli] = gas->temperature();
 
-        psiCells[celli] = gas->meanMolecularWeight()/gas->RT();
+        psiCells[celli] = gas->meanMolecularWeight()/gas->RT(); // meanMolecularWeight() kg/kmol    RT() Joules/kmol
 
-        muCells[celli] = trans->viscosity();
+        muCells[celli] = trans->viscosity(); // Pa-s
 
-        alphaCells[celli] = trans->thermalConductivity()/(gas->cp_mass());
+        alphaCells[celli] = trans->thermalConductivity()/(gas->cp_mass()); // thermalConductivity() W/m/K   cp_mass()   J/kg/K
 
         scalarList diffTemp(gas->nSpecies());
-        trans->getMixDiffCoeffs(&diffTemp[0]);
+        trans->getMixDiffCoeffs(&diffTemp[0]); // m2/s
         forAll(Y, i)
         {
-            diff[i][celli] = gas->density()*diffTemp[i];
+            diff[i][celli] = gas->density()*diffTemp[i]; // density() kg/m3
         }
     }
 
