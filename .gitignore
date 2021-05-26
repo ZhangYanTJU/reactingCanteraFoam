@@ -39,7 +39,7 @@ platforms/
 
 # Source packages - anywhere
 *.tar.bz2
-*.tar.gz
+#*.tar.gz
 *.tar
 *.tgz
 *.gtgz
