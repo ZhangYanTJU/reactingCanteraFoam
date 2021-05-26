@@ -1,5 +1,8 @@
 # reactingCanteraFoam
 
+[![OpenFOAM version](https://img.shields.io/badge/OpenFOAM-7-brightgreen)](https://github.com/OpenFOAM/OpenFOAM-7)
+[![Cantera version](https://img.shields.io/badge/Cantera-2.4%202.5-red)](https://github.com/Cantera/cantera)
+
 This solver calls Cantera to update T psi mu alpha D in OpenFOAM
 
 I have run test cases in Cantera-2.4 Cantera 2.5.1 with OpenFOAM. And the flame structures are better than that from reactingFoam.
