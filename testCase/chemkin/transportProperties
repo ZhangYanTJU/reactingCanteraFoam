@@ -1,0 +1,706 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "chemkin";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+H		
+{		
+transport		
+{		
+As 	8.87E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+H2		
+{		
+transport		
+{		
+As 	7.63E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+O		
+{		
+transport		
+{		
+As 	2.12E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+O2		
+{		
+transport		
+{		
+As 	1.76E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+OH		
+{		
+transport		
+{		
+As 	2.12E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+H2O		
+{		
+transport		
+{		
+As 	1.49E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CO		
+{		
+transport		
+{		
+As 	1.51E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+HCO		
+{		
+transport		
+{		
+As 	1.17E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CO2		
+{		
+transport		
+{		
+As 	1.56E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH3		
+{		
+transport		
+{		
+As 	1.06E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+CH4		
+{		
+transport		
+{		
+As 	1.08E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+HO2		
+{		
+transport		
+{		
+As 	1.94E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+H2O2		
+{		
+transport		
+{		
+As 	1.94E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH2O		
+{		
+transport		
+{		
+As 	1.17E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH3O		
+{		
+transport		
+{		
+As 	1.21E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H6	
+{		
+transport		
+{		
+As 	1.05E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C2H4		
+{		
+transport		
+{		
+As 	1.54E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H5		
+{		
+transport		
+{		
+As 	1.05E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C2H		
+{		
+transport		
+{		
+As 	1.17E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H2		
+{		
+transport		
+{		
+As 	1.29E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H3		
+{		
+transport		
+{		
+As 	1.29E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH3OH		
+{		
+transport		
+{		
+As 	1.28E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH2OH	
+{		
+transport		
+{		
+As 	1.21E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH2CO		
+{		
+transport		
+{		
+As 	1.31E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+HCCO		
+{		
+transport		
+{		
+As 	3.92E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+CH3CO		
+{		
+transport		
+{		
+As 	1.31E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH2CHO		
+{		
+transport		
+{		
+As 	1.31E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH3CHO		
+{		
+transport		
+{		
+As 	1.31E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C3H4-A	
+{		
+transport		
+{		
+As 	1.08E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C3H4-P
+{		
+transport		
+{		
+As 	1.08E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C3H6		
+{		
+transport		
+{		
+As 	1.24E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C4H6		
+{		
+transport		
+{		
+As 	1.13E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+NC3H7		
+{		
+transport		
+{		
+As 	9.41E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C4H7		
+{		
+transport		
+{		
+As 	1.15E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C4H8-1		
+{		
+transport		
+{		
+As 	1.15E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+PC4H9		
+{		
+transport		
+{		
+As 	8.59E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+CH3COCH2		
+{		
+transport		
+{		
+As 	9.65E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C2H5CHO	
+{		
+transport		
+{		
+As 	1.10E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C5H9		
+{		
+transport		
+{		
+As 	8.14E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C5H10-1		
+{		
+transport		
+{		
+As 	8.47E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C5H11-1		
+{		
+transport		
+{		
+As 	1.00E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C2H5O		
+{		
+transport		
+{		
+As 	9.95E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+CH3O2	
+{		
+transport		
+{		
+As 	1.56E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+CH3O2H	
+{		
+transport		
+{		
+As 	1.56E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H3O1-2		
+{		
+transport		
+{		
+As 	1.31E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H3CO		
+{		
+transport		
+{		
+As 	1.43E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C2H3CHO		
+{		
+transport		
+{		
+As 	9.75E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C3H5O		
+{		
+transport		
+{		
+As 	9.46E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C4H7O		
+{		
+transport		
+{		
+As 	9.29E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C3H5-A		
+{		
+transport		
+{		
+As 	1.24E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C3H3		
+{		
+transport		
+{		
+As 	1.08E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+C3H2		
+{		
+transport		
+{		
+As 	1.37E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+
+".*"		
+{		
+transport		
+{		
+As 	9.58E-07	;
+Ts	1.98E+02	;
+}		
+} 
+		
+CH2(S)		
+{		
+transport		
+{		
+As 	9.58E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+NC3H7CHO		
+{		
+transport		
+{		
+As 	1.01E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+NC3H7CO	
+{		
+transport		
+{		
+As 	1.01E-06	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C2H5COCH2		
+{		
+transport		
+{		
+As 	8.90E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+CH3CHCO	
+{		
+transport		
+{		
+As 	1.43E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
+NC3H7COCH3		
+{		
+transport		
+{		
+As 	8.62E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+NC3H7COCH2		
+{		
+transport		
+{		
+As 	9.91E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H16	
+{		
+transport		
+{		
+As 	7.86E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H15-1	
+{		
+transport		
+{		
+As 	7.86E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H15	
+{		
+transport		
+{		
+As 	7.86E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H15O2	
+{		
+transport		
+{		
+As 	8.32E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H14OOH		
+{		
+transport		
+{		
+As 	8.32E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H14OOHO2		
+{		
+transport		
+{		
+As 	6.62E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+C7H14O	
+{		
+transport		
+{		
+As 	8.33E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+NC7KET		
+{		
+transport		
+{		
+As 	8.31E-07	;
+Ts	1.98E+02	;
+}		
+}		
+		
+		
+N2		
+{		
+transport		
+{		
+As 	1.57E-06	;
+Ts	1.78E+02	;
+}		
+}		
+		
+		
