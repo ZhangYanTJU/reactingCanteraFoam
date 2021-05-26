@@ -2,21 +2,43 @@
 
 This solver calls Cantera to update T psi mu alpha D in OpenFOAM
 
-You can build your flame in OpenFOAM by these steps:
-- copy one case from [this repository](https://github.com/ZSHtju/reactingDNS_OpenFOAM), remove the 0 folder.
-- python adiabatic_flame.py, to generate a premixed flame in file: adiabatic_flame.csv
-- matlab Ctr2OF.m, which will convert adiabatic_flame.csv to OpenFOAM 0 folder.
-- rebuild mesh according to the output of matlab (domain length and grid number, uniform mesh)
-- run reactingCanteraFoam with following settup in constant/thermophysicalProperties
-```
-Sct 0.7;// ignore it if laminar
-mechanismFile "TRF.cti"; // put TRF.cti in $FOAM_CASE, needed by Cantera
-transportModel "Mix"; // you can also try other transport models from Cantera: Multi, UnityLewis, Ion, water, HighP
-```
-
 I have run test cases in Cantera-2.4 Cantera 2.5.1 with OpenFOAM. And the flame structures are better than that from reactingFoam.
 Since I have no time to test the performance thoroughly, I hope someone can do this if interested.
 
 The tool to convert Cantera results to OpenFOAM fields is from [JSqueo299 in GitHub](https://github.com/JSqueo299/Python/blob/main/Cantera/premixedFlames/Matlab2OF.m).
 
 The correct of transport equation is copied from [ZSHtju in GitHub](https://github.com/ZSHtju/reactingDNS_OpenFOAM).
+
+## How to compile
+
+You should compile Cantera source code, to generate c++ library and headers, which is used in this OpenFOAM solver.
+Or you can use my pre-compiled Cantera-2.5.2 library and headers in `cantera_build`:
+```
+cd cantera_build/lib
+tar -zxvf libcantera_shared2.5.2.so.tar.gz
+ln -s libcantera_shared2.5.2.so libcantera_shared.so.2
+cd ../..
+wmake
+```
+
+## How to use
+
+You can run the `testCase`:
+```
+cd testCase
+export LD_LIBRARY_PATH=../cantera_build/lib:$LD_LIBRARY_PATH
+export CANTERA_DATA=../cantera_build/data
+reactingCanteraFoam
+```
+
+Or you can build your flame in OpenFOAM by these steps:
+- `python adiabatic_flame.py`, to generate a premixed flame, you will get adiabatic_flame.csv
+- `matlab Ctr2OF.m`, which will convert adiabatic_flame.csv to OpenFOAM `0` folder
+- rebuild mesh according to the output of MATLAB (domain length and grid number, uniform mesh)
+- run `reactingCanteraFoam` with following settup in constant/thermophysicalProperties
+
+```
+Sct 0.7;// ignore it if laminar
+mechanismFile "h2_konnov_2008.xml"; // put the cantera mech file (*.cti or *.xml) in $FOAM_CASE or $CANTERA_DATA
+transportModel "Mix"; // you can also try other transport models from Cantera: Multi, UnityLewis, Ion, water, HighP
+```

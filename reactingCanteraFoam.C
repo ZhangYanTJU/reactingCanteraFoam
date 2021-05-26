@@ -36,8 +36,9 @@ Description
 //#include "cantera/zeroD/Reactor.h"
 //#include "cantera/PureFluid.h"
 //#include "cantera/IdealGasMix.h"
-#include "cantera/thermo/IdealGasPhase.h" // defines class IdealGasPhase
-#include "cantera/kinetics/GasKinetics.h"
+
+//#include "cantera/thermo/IdealGasPhase.h" // defines class IdealGasPhase
+//#include "cantera/kinetics/GasKinetics.h"
 #include "cantera/transport.h" // transport properties
 
 #include "fvCFD.H"

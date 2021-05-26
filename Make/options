@@ -13,14 +13,7 @@ EXE_INC = \
     -I$(LIB_SRC)/thermophysicalModels/chemistryModel/lnInclude \
     -I$(LIB_SRC)/ODE/lnInclude \
     -I$(LIB_SRC)/combustionModels/lnInclude \
-    -I$(pj_dir)/softwareZY/build/cantera/include \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/zeroD \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/thermo \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/transport \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/kinetics \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/numerics \
-    -I$(pj_dir)/softwareZY/build/cantera/include/cantera/base
+    -I./cantera_build/include
 
 EXE_LIBS = \
     -lfiniteVolume \
@@ -36,4 +29,4 @@ EXE_LIBS = \
     -lchemistryModel \
     -lODE \
     -lcombustionModels \
-    $(pj_dir)/softwareZY/build/cantera/lib/libcantera.a
+    ./cantera_build/lib/libcantera_shared2.5.2.so
