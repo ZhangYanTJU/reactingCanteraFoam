@@ -13,7 +13,8 @@ auto gas = sol->thermo();
 word transportModel(thermo.lookup("transportModel")); // Mix, Multi, UnityLewis, Ion, water, HighP
 autoPtr<Cantera::Transport> trans(newTransportMgr(transportModel, sol->thermo().get()));
 
-if (gas->nSpecies() != composition.species().size())
+const long unsigned int nSpecies_OF = composition.species().size();
+if (gas->nSpecies() != nSpecies_OF)
 {
     FatalErrorIn("CanteraChemistryModel::solve")
         << "nSpecies in Cantera is not consistent with that in OpenFOAM" << endl
@@ -139,26 +140,3 @@ volVectorField DiffError
     mesh,
     dimensionedVector("DiffError", dimDynamicViscosity/dimLength, Zero)
 );
-
-
-PtrList<volScalarField> X(Y.size());
-forAll(X,i)
-{
-word name("X"+Y[i].name());
-X.set
-(
-i,new volScalarField
-    (
-    IOobject
-    (
-        name,
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
-    )
-);
-}

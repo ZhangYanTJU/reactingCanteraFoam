@@ -15,14 +15,6 @@ tmp<fv::convectionScheme<scalar>> mvConvection
 );
 
 const volScalarField MW = thermo.W(); // Molecular weight [kg/kmol]
-forAll(Y,i)
-{
-    forAll(T, cellI)
-    {
-        X[i][cellI] = Y[i][cellI]*MW[cellI]/composition.Wi(i);
-    }
-}
-
 
 forAll(Y, i)
 {
@@ -40,7 +32,6 @@ const surfaceScalarField phiUc = linearInterpolate(DiffError) & mesh.Sf();
     forAll(Y, i)
     {
         volScalarField& Yi = Y[i];
-        volScalarField& Xi = X[i];
         const volScalarField& diffi = diff[i];
 
 
