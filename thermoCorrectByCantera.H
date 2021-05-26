@@ -46,7 +46,7 @@
         trans->getMixDiffCoeffs(&diffTemp[0]); // m2/s
         forAll(Y, i)
         {
-            diff[i][celli] = gas->density()*diffTemp[i]; // density() kg/m3
+            diff[i][celli] = diffTemp[i];
         }
     }
 

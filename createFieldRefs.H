@@ -53,7 +53,7 @@ forAll(Y, i)
                 IOobject::NO_WRITE
             ),
             mesh,
-            dimensionedScalar(dimDynamicViscosity, 0) // kg/(m s)
+            dimensionedScalar(dimViscosity, 0) // m2/s
         )
     );
 }
