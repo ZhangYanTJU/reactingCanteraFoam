@@ -43,7 +43,7 @@
         alphaCells[celli] = trans->thermalConductivity()/(gas->cp_mass()); // thermalConductivity() W/m/K   cp_mass()   J/kg/K
 
         scalarList diffTemp(gas->nSpecies());
-        trans->getMixDiffCoeffs(&diffTemp[0]); // m2/s
+        trans->getMixDiffCoeffsMass(&diffTemp[0]); // m2/s
         forAll(Y, i)
         {
             diff[i][celli] = diffTemp[i];
@@ -97,7 +97,7 @@
                 palpha[facei] = trans->thermalConductivity()/(gas->cp_mass());
 
                 scalarList diffTemp(gas->nSpecies());
-                trans->getMixDiffCoeffs(&diffTemp[0]);
+                trans->getMixDiffCoeffsMass(&diffTemp[0]);
                 forAll(Y, i)
                 {
                     diff[i].boundaryFieldRef()[patchi][facei] = diffTemp[i];
@@ -125,7 +125,7 @@
                 palpha[facei] = trans->thermalConductivity()/(gas->cp_mass());
 
                 scalarList diffTemp(gas->nSpecies());
-                trans->getMixDiffCoeffs(&diffTemp[0]);
+                trans->getMixDiffCoeffsMass(&diffTemp[0]);
                 forAll(Y, i)
                 {
                     diff[i].boundaryFieldRef()[patchi][facei] = diffTemp[i];

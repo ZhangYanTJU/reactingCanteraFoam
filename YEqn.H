@@ -14,13 +14,11 @@ tmp<fv::convectionScheme<scalar>> mvConvection
     )
 );
 
-const volScalarField MW = thermo.W(); // Molecular weight [kg/kmol]
-
 forAll(Y, i)
 {
     const volScalarField& Yi = Y[i];
     const volScalarField Diffi = rho*diff[i];
-    DiffError += (Diffi*fvc::grad(Yi) + Yi*Diffi*fvc::grad(MW)/MW);
+    DiffError += Diffi*fvc::grad(Yi);
 }
 const surfaceScalarField phiUc = linearInterpolate(DiffError) & mesh.Sf();
 
@@ -52,7 +50,7 @@ const surfaceScalarField phiUc = linearInterpolate(DiffError) & mesh.Sf();
                 HsiPatch[facei] = composition.Hs(i, pp[facei], Tp[facei]);
             }
         }
-        vk += Hsi*(Diffi*fvc::grad(Yi) + Yi*Diffi*fvc::grad(MW)/MW - Yi*DiffError);
+        vk += Hsi*(Diffi*fvc::grad(Yi) - Yi*DiffError);
         diffsh += fvc::laplacian(thermo.alpha()*Hsi, Yi);
 
         if (i != inertIndex && composition.active(i))
@@ -65,7 +63,6 @@ const surfaceScalarField phiUc = linearInterpolate(DiffError) & mesh.Sf();
               //- fvm::laplacian(turbulence->muEff(), Yi) // original reactingFoam solver
               - fvm::laplacian(DEff, Yi)
               + mvConvection->fvmDiv(phiUc, Yi)
-              - fvc::laplacian(Diffi*Yi/MW, MW)
               // soret effect not included yet
              ==
                 reaction->R(Yi)
