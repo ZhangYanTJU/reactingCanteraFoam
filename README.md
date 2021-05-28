@@ -14,8 +14,25 @@ The correct of transport equation is copied from [ZSHtju in GitHub](https://gith
 
 ## How to compile
 
-You should compile Cantera source code, to generate c++ library and headers, which is used in this OpenFOAM solver.
-Or you can use my pre-compiled Cantera-2.5.2 library and headers in `cantera_build`:
+You can compile Cantera source code, to generate c++ library and headers, which is used in this OpenFOAM solver.
+
+
+Or using libcantera installed by conda:
+```
+conda install -c cantera libcantera-devel
+```
+in this way, you should change Make/options to :
+```
+-I/path_to_anaconda3/envs/yourEnvName/include
+
+/path_to_anaconda3/envs/yourEnvName/lib/libcantera_shared.so
+```
+PS: if you want to use Cantera Python module, you have to install it individually:
+```
+conda install -c cantera cantera
+```
+
+If you just want to run this solver for a try, you can use my pre-compiled Cantera-2.5.2 library and headers in `cantera_build`:
 ```
 cd cantera_build/lib
 tar -zxvf libcantera_shared2.5.2.so.tar.gz
